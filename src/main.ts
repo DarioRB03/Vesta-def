@@ -8,6 +8,7 @@ import { nutrition } from 'ionicons/icons';
 import { barbell } from 'ionicons/icons';
 import { add } from 'ionicons/icons';
 import { eyeOff } from 'ionicons/icons';
+import { eye } from 'ionicons/icons';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
@@ -30,6 +31,9 @@ addIcons({
 });
 addIcons({
   'eye-off': eyeOff
+});
+addIcons({
+  'eye': eye
 });
 
 

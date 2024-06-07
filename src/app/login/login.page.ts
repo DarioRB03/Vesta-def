@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ToastController, } from '@ionic/angular/standalone';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ToastController } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { FirestoreService } from '../common/services/firestore.service';
 import { IonicModule } from '@ionic/angular';
@@ -11,12 +11,13 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule,
-    IonicModule, FormsModule]
+  imports: [CommonModule, IonicModule, FormsModule]
 })
 export class LoginPage implements OnInit {
 
   showSpinner: boolean = false;
+  passwordType: string = 'password'; // Password input type
+  passwordIcon: string = 'eye-off'; // Password toggle icon
 
   constructor(
     private firestoreService: FirestoreService,
@@ -26,9 +27,13 @@ export class LoginPage implements OnInit {
 
   ngOnInit() { }
 
-  async login() {
-    const email = (document.querySelector('input[name="email"]') as HTMLInputElement).value;
-    const password = (document.querySelector('input[name="password"]') as HTMLInputElement).value;
+  async login(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+
+    const email = form.value.email;
+    const password = form.value.password;
 
     console.log('Email:', email); // Add for debugging
     console.log('Password:', password); // Add for debugging
@@ -73,5 +78,10 @@ export class LoginPage implements OnInit {
       position: 'bottom'
     });
     toast.present();
+  }
+
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 }

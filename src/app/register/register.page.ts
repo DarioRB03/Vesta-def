@@ -18,6 +18,8 @@ export class RegisterPage implements OnInit {
 
   newUser: User;
   cargando: boolean = false;
+  passwordType: string = 'password'; // Password input type
+  passwordIcon: string = 'eye-off'; // Password toggle icon
 
   constructor(
     private firestoreService: FirestoreService,
@@ -67,5 +69,10 @@ export class RegisterPage implements OnInit {
     } finally {
       this.cargando = false;
     }
+  }
+
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 }

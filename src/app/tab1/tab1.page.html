@@ -1,18 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-chip class="avatar" routerLink="/perfil">
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <strong><ion-label color="dark light">Darío</ion-label></strong>
-    </ion-chip>
-  </ion-toolbar>
-  <ion-searchbar color="dark light" placeholder="Buscar"></ion-searchbar>
+<ion-content>
+  <ion-header [translucent]="true">
+    <!-- Header content -->
+  </ion-header>
+  
+  <ion-card>
+    <ion-card-content>
+      <form #exerciseForm="ngForm" (ngSubmit)="saveExercise(exerciseForm)">
+        <ion-item>
+          <ion-label position="floating">Peso (kg)</ion-label>
+          <ion-input type="number" name="weight" [(ngModel)]="exercise.weight" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Repeticiones</ion-label>
+          <ion-input type="number" name="reps" [(ngModel)]="exercise.reps" required></ion-input>
+        </ion-item>
+        <ion-button type="submit" [disabled]="!exerciseForm.valid">Guardar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 
-</ion-header>
-
-<ion-content [fullscreen]="true">
-
-
-
+  <!-- Aquí se coloca el elemento canvas para la gráfica -->
+  <canvas id="exerciseChart"></canvas>
 </ion-content>

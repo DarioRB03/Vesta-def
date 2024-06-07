@@ -19,8 +19,8 @@
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Contraseña</ion-label>
-                <ion-input [(ngModel)]="newUser.password" name="password" type="password" required></ion-input>
-                <ion-icon name="eye-off" slot="end"></ion-icon>
+                <ion-input [(ngModel)]="newUser.password" name="password" [type]="passwordType" required></ion-input>
+                <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
               </ion-item>
             </div>
             <div class="button-container">

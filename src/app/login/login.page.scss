@@ -69,6 +69,10 @@ ion-card-content {
     }
 }
 
+ion-icon {
+    color: black;
+    margin-top: 23px;
+}
 
 .fields-container {
     justify-content: center;
@@ -82,14 +86,6 @@ ion-card-content {
     margin-bottom: 50px;
 }
 
-.password-container {
-    justify-content: end;
-    text-align: end;
-    font-weight: bold;
-    color: black;
-    font-size: 17px;
-    margin-top: 20px;
-}
 
 ion-item {
     border-radius: 20px;

@@ -1,4 +1,3 @@
-<!-- login.page.html -->
 <ion-content>
   <div class="spinner-container" *ngIf="showSpinner">
     <video autoplay loop muted controls="false" preload="metadata" webkit-playsinline="webkit-playsinline"
@@ -15,23 +14,25 @@
           <div class="title-container">
             <ion-title>¡Hola de nuevo!</ion-title>
           </div>
-          <form (ngSubmit)="login()" #loginForm="ngForm">
+          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="fields-container">
               <ion-item>
                 <ion-label position="floating">Correo electrónico</ion-label>
-                <ion-input formControlName="email" type="email"></ion-input>
+                <ion-input name="email" type="email" ngModel required></ion-input>
               </ion-item>
 
               <ion-item>
                 <ion-label position="floating">Contraseña</ion-label>
-                <ion-input formControlName="password" type="password"></ion-input>
+                <ion-input name="password" [type]="passwordType" ngModel required></ion-input>
+                <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
               </ion-item>
-              <div class="password-container">
-                <ion-label>¿Olvidó su contraseña?</ion-label>
-              </div>
             </div>
             <div class="button-container">
-              <ion-button shape="round" size="large" type="submit" class="login-button">Iniciar Sesión</ion-button>
+              <ion-button shape="round" size="large" type="submit" class="login-button"
+                [disabled]="loginForm.invalid || showSpinner">
+                <ion-spinner *ngIf="showSpinner" name="bubbles"></ion-spinner>
+                Iniciar Sesión
+              </ion-button>
             </div>
           </form>
         </ion-card-content>
