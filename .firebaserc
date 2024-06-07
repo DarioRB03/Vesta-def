@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "db-vesta": {
+      "hosting": {
+        "app": [
+          "db-vesta"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "db-vesta"
+  }
+}

@@ -1,0 +1,44 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.my-ContainerProfile ion-chip {
+    margin-left: 75%;
+    max-width: 70%;
+    display: inline-block !important;
+    margin-top: -10%;
+}
+
+.my-ContainerTitle ion-title {
+    margin-top: 21%;
+}
+
+.avatar {
+    margin-left: 77%;
+}
+
+.button {
+    margin-top: 1200%;
+    margin-left: 620%;
+}
+
+ion-toolbar {
+    --background: rgba(61, 173, 255);
+}
+
+ion-searchbar {
+    --background: rgba(61, 173, 255);
+}
+
+ion-fab-button {
+    --background: radial-gradient(circle, rgba(153, 255, 255, 1) 0%, rgba(61, 173, 255, 1) 70%);
+}
+
+ion-icon {
+    color: black;
+}
+
+ion-header {
+    background-color: rgba(61, 173, 255);
+}

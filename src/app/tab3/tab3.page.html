@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-chip class="avatar" routerLink="/perfil">
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <strong><ion-label color="dark light">Darío</ion-label></strong>
+    </ion-chip>
+  </ion-toolbar>
+  <ion-searchbar color="dark light" placeholder="Search"></ion-searchbar>
+  <ion-segment value="all">
+    <ion-segment-button value="all">
+      <ion-label>Social</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="favorites">
+      <ion-label>Personal</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-fab>
+    <ion-fab-button class="button">
+      <ion-icon name="add" size="large"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
