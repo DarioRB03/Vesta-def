@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class Tab1Page implements OnInit {
   @ViewChild('exerciseChart', { static: true }) exerciseChart: ElementRef;
   exerciseData: any = [];
-  exercise: { weight: number, reps: number } = { weight: 0, reps: 0 }; // Define la propiedad exercise
+  exercise: { weight: number, reps: number } = { weight: 0, reps: 0 };
 
   constructor() { }
 
@@ -46,15 +46,12 @@ export class Tab1Page implements OnInit {
   }
 
   calculateMaxReps() {
-    // Implementa el cálculo de la repetición máxima aquí
-    const maxReps = this.exercise.reps * (1 + (this.exercise.weight * 0.0333)); // Fórmula de Brzycki
+    const maxReps = this.exercise.reps * (1 + (this.exercise.weight * 0.0333));
     return maxReps;
   }
 
   saveExercise(form: { value: { weight: any; reps: any; }; }) {
-    // Aquí podrías recopilar los datos del formulario y asignarlos a la propiedad exercise
     this.exercise = { weight: form.value.weight, reps: form.value.reps };
-    // Luego, podrías generar la gráfica con los nuevos datos del ejercicio
     this.generateChart();
   }
 }

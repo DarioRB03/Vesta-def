@@ -18,8 +18,8 @@ export class RegisterPage implements OnInit {
 
   newUser: User;
   cargando: boolean = false;
-  passwordType: string = 'password'; // Password input type
-  passwordIcon: string = 'eye-off'; // Password toggle icon
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
 
   constructor(
     private firestoreService: FirestoreService,
@@ -41,31 +41,27 @@ export class RegisterPage implements OnInit {
     }
     this.cargando = true;
     try {
-      const userId = this.firestoreService.createIdDoc(); // Generamos un ID único
-      const createdAt = new Date(); // Obtener la fecha y hora actual
+      const userId = this.firestoreService.createIdDoc();
+      const createdAt = new Date();
 
-      this.newUser.userId = userId; // Asignamos el ID generado al usuario
-      this.newUser.createdAt = createdAt; // Asignamos la fecha y hora de creación al usuario
+      this.newUser.userId = userId;
+      this.newUser.createdAt = createdAt;
 
-      // Convertir el objeto User a un objeto plano
       const userData = {
         userId: this.newUser.userId,
         nombre: this.newUser.username,
         email: this.newUser.email,
         password: this.newUser.password,
-        createdAt: this.newUser.createdAt // Asegúrate de incluir createdAt en el userData
+        createdAt: this.newUser.createdAt
       };
 
       await this.firestoreService.createDocumentID(userData, 'Usuarios', userId);
       console.log("Document saved successfully");
-      // Reiniciar el formulario
       this.initUser();
       form.resetForm();
-      // Redirigir al usuario a la página de inicio de sesión u otra página después del registro
       this.router.navigate(['/login']);
     } catch (error) {
       console.error("Error saving document: ", error);
-      // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
     } finally {
       this.cargando = false;
     }

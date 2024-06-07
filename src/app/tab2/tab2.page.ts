@@ -16,12 +16,11 @@ import { Routine } from '../common/models/routine.model';
 })
 export class Tab2Page implements OnInit {
 
-  
+
 
   constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit() {
-    // Obtener rutinas del apartado social y personal al iniciar el componente
   }
 
 }

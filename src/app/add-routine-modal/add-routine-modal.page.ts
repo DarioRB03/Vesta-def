@@ -38,7 +38,6 @@ export class AddRoutineModalPage implements OnInit {
 
   confirmSelection() {
     console.log('Confirmed Selected Items:', this.selectedItems);
-    // Aquí puedes realizar acciones con los items seleccionados, como guardarlos en la base de datos
     this.closeModal();
   }
 }

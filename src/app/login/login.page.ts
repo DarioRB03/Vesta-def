@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   showSpinner: boolean = false;
-  passwordType: string = 'password'; // Password input type
-  passwordIcon: string = 'eye-off'; // Password toggle icon
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
 
   constructor(
     private firestoreService: FirestoreService,
@@ -35,24 +35,20 @@ export class LoginPage implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    console.log('Email:', email); // Add for debugging
-    console.log('Password:', password); // Add for debugging
+    console.log('Email:', email);
+    console.log('Password:', password);
 
     try {
-      this.showSpinner = true; // Show spinner while verifying user
+      this.showSpinner = true;
 
       const result = await this.firestoreService.verifyUser(email, password);
-      console.log('Result:', result); // Add for debugging
+      console.log('Result:', result);
 
-      // Check if the user authentication was successful
       if (result.success) {
-        // Valid user, navigate to the home page
         this.router.navigate(['/home']);
       } else {
-        // Hide spinner if there's an error
         this.showSpinner = false;
 
-        // Show error message based on the reason of failure
         if (result.message === 'email') {
           this.showToast('El correo electrónico es incorrecto.');
         } else if (result.message === 'password') {
@@ -62,10 +58,8 @@ export class LoginPage implements OnInit {
         }
       }
     } catch (error) {
-      // Hide spinner if there's an error
       this.showSpinner = false;
 
-      // Show generic error message
       console.error('Error verifying credentials: ', error);
       this.showToast('Error al iniciar sesión. Inténtalo de nuevo.');
     }
@@ -74,7 +68,7 @@ export class LoginPage implements OnInit {
   async showToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000, // Duración del toast en milisegundos
+      duration: 2000,
       position: 'bottom'
     });
     toast.present();

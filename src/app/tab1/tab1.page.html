@@ -1,8 +1,7 @@
 <ion-content>
   <ion-header [translucent]="true">
-    <!-- Header content -->
   </ion-header>
-  
+
   <ion-card>
     <ion-card-content>
       <form #exerciseForm="ngForm" (ngSubmit)="saveExercise(exerciseForm)">
@@ -19,6 +18,5 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Aquí se coloca el elemento canvas para la gráfica -->
   <canvas id="exerciseChart"></canvas>
 </ion-content>

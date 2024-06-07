@@ -23,10 +23,8 @@ export class FirestoreService {
     return setDoc(documentRef, data);
   }
 
-  // Autenticación de usuarios
   async registerUser(email: string, password: string): Promise<{ success: boolean, message?: string }> {
     try {
-      // Comprobar si el usuario ya está registrado
       const userQuery = query(collection(this.firestore, 'Usuarios'), where('email', '==', email));
       const userSnapshot = await getDocs(userQuery);
 
@@ -34,7 +32,6 @@ export class FirestoreService {
         return { success: false, message: 'El usuario ya está registrado.' };
       }
 
-      // Registrar al usuario en Firestore
       const userId = uuidv4();
       const userRef = doc(this.firestore, 'Usuarios', userId);
       await setDoc(userRef, { email, password });
